@@ -5,7 +5,7 @@ const effectiveness = {
   type: { type: String },
 };
 
-const path = {
+const svg_path = {
   color: { type: String },
   points: { type: String },
 };
@@ -13,15 +13,15 @@ const path = {
 const pokemonSchema = new Schema(
   {
     id: { type: String, unique: true, required: true },
-    name: { type: String },
-    image: { type: String },
-    variant: { type: String },
-    number: { type: Number },
+    name: String,
+    image: String,
+    variant: String,
+    number: Number,
     types: [String],
     evolutions: [{ type: String, ref: "Pokemon" }],
-    evolutionOrder: { type: Number },
+    evolutionOrder: Number,
     forms: [{ type: String, ref: "Pokemon" }],
-    paths: [path],
+    paths: [svg_path],
     resistances: [effectiveness],
     weaknesses: [effectiveness],
     immunities: [effectiveness],
