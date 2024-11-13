@@ -25,6 +25,8 @@ const pokemonSchema = new Schema(
     resistances: [effectiveness],
     weaknesses: [effectiveness],
     immunities: [effectiveness],
+    nextPokemon: { type: String, ref: "Pokemon" },
+    prevPokemon: { type: String, ref: "Pokemon" },
   },
   { collection: "Pokemon" }
 );
@@ -39,6 +41,20 @@ pokemonSchema.virtual("formDetails", {
   ref: "Pokemon",
   localField: "forms",
   foreignField: "id",
+});
+
+pokemonSchema.virtual("nextDetails", {
+  ref: "Pokemon",
+  localField: "nextPokemon",
+  foreignField: "id",
+  justOne: true,
+});
+
+pokemonSchema.virtual("prevDetails", {
+  ref: "Pokemon",
+  localField: "prevPokemon",
+  foreignField: "id",
+  justOne: true,
 });
 
 pokemonSchema.set("toObject", { virtuals: true });

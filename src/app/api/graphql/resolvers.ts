@@ -43,12 +43,29 @@ const resolvers = {
 
       return parent.evolutionDetails;
     },
+
     forms: async (parent: any) => {
       if (!parent.formDetails) {
         return [];
       }
 
       return parent.formDetails;
+    },
+
+    nextPokemon: async (parent: any) => {
+      if (!parent.nextDetails) {
+        return null;
+      }
+
+      return parent.nextDetails;
+    },
+
+    prevPokemon: async (parent: any) => {
+      if (!parent.prevDetails) {
+        return null;
+      }
+
+      return parent.prevDetails;
     },
   },
 };

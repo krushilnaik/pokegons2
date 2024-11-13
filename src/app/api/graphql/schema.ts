@@ -23,6 +23,8 @@ const typeDefs = `#graphql
     types: [String]!
     variant: String!
     weaknesses: [PokemonEffectiveness]
+    nextPokemon: Pokemon
+    prevPokemon: Pokemon
   }
 
   type Query {

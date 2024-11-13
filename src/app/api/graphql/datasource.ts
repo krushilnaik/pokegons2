@@ -2,10 +2,12 @@ import PokemonModel from "@/models";
 import { Pokemon } from "@/types";
 import { MongoDataSource } from "apollo-datasource-mongodb";
 
+const expand = "evolutionDetails formDetails nextDetails prevDetails";
+
 export default class PokemonDocument extends MongoDataSource<Pokemon> {
   async getPokemonByName(name: string) {
     try {
-      return await PokemonModel.findOne({ name }).populate("evolutionDetails formDetails");
+      return await PokemonModel.findOne({ name }).populate(expand);
     } catch (error) {
       console.error(error);
       throw new Error("Failed to fetch pokemon");
@@ -14,7 +16,7 @@ export default class PokemonDocument extends MongoDataSource<Pokemon> {
 
   async getPokemonByID(id: string) {
     try {
-      return await PokemonModel.findOne({ id }).populate("evolutionDetails formDetails");
+      return await PokemonModel.findOne({ id }).populate(expand);
     } catch (error) {
       console.error(error);
       throw new Error("Failed to fetch pokemon");
@@ -38,7 +40,7 @@ export default class PokemonDocument extends MongoDataSource<Pokemon> {
 
     // console.log(filter);
 
-    const response = await PokemonModel.find(filter).populate("evolutionDetails formDetails");
+    const response = await PokemonModel.find(filter).populate(expand);
 
     // console.log(response[0]);
 
@@ -51,7 +53,7 @@ export default class PokemonDocument extends MongoDataSource<Pokemon> {
 
   async getAllPokemon() {
     try {
-      return await PokemonModel.find().populate("evolutionDetails formDetails");
+      return await PokemonModel.find().populate(expand);
     } catch (error) {
       console.error(error);
       throw new Error("Failed to fetch pokemon");
