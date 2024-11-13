@@ -18,8 +18,12 @@ export default function Home() {
   });
   const deferredQuery = useDeferredValue(queryRef);
 
+  if (!search) {
+    return null;
+  }
+
   return (
-    <main className="p-4">
+    <main>
       <Suspense fallback={<div>loading</div>}>
         <Info queryRef={deferredQuery} />
       </Suspense>

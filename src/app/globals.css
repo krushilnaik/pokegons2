@@ -6,4 +6,8 @@
   h1 {
     @apply text-3xl font-semibold;
   }
+
+  section {
+    @apply flex flex-col items-center;
+  }
 }
